@@ -23,3 +23,5 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     depends_on:
       - db
+  volumes:
+    cat_friend_postgresql_data:
