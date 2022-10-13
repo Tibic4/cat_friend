@@ -1,0 +1,15 @@
+require: rubocop-rails
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'bin/{bundle,rails,rake}'
+    - 'config.ru'
+    - 'Rakefile'
+Rails/EnvironmentVariableAccess:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false
