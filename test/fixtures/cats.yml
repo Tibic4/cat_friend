@@ -1,7 +1,5 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+a_chan:
+  name: A-chan
 
-one:
-  name: MyString
-
-two:
-  name: MyString
+b_chan:
+  name: B-chan

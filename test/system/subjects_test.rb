@@ -4,7 +4,7 @@ require 'application_system_test_case'
 
 class SubjectsTest < ApplicationSystemTestCase
   setup do
-    @subject = subjects(:one)
+    @subject = subjects(:a_poop)
   end
 
   test 'visiting the index' do

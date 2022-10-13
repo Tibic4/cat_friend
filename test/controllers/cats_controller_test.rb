@@ -4,7 +4,7 @@ require 'test_helper'
 
 class CatsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @cat = cats(:one)
+    @cat = cats(:a_chan)
   end
 
   test 'should get index' do

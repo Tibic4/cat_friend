@@ -1,9 +1,11 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+a_poop:
+  name: poop
+  cat: a_chan
 
-one:
-  name: MyString
-  cat: one
+a_wee_wee:
+  name: wee-wee
+  cat: a_chan
 
-two:
-  name: MyString
-  cat: two
+b_food:
+  name: food
+  cat: b_chan

@@ -4,7 +4,7 @@ require 'application_system_test_case'
 
 class CatsTest < ApplicationSystemTestCase
   setup do
-    @cat = cats(:one)
+    @cat = cats(:a_chan)
   end
 
   test 'visiting the index' do
