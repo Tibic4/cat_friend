@@ -3,5 +3,7 @@
     <strong><%= t('.name') %></strong>
     <%= cat.name %>
   </p>
-
+  <p>
+    <%= link_to t('.edit_notation_setting'), edit_cat_notation_setting_path(cat) %>
+  </p>
 </div>

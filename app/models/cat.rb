@@ -1,3 +1,3 @@
 class Cat < ApplicationRecord
-  has_many :subject, dependent: :destroy
+  has_many :subjects, dependent: :destroy
 end
