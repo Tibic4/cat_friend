@@ -23,5 +23,7 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     depends_on:
       - db
+    tty: true
+    stdin_open: true
   volumes:
     cat_friend_postgresql_data:
