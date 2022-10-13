@@ -22,12 +22,7 @@ class CatsControllerTest < ActionDispatch::IntegrationTest
       post cats_url, params: { cat: { name: @cat.name } }
     end
 
-    assert_redirected_to cat_url(Cat.last)
-  end
-
-  test 'should show cat' do
-    get cat_url(@cat)
-    assert_response :success
+    assert_redirected_to cats_url
   end
 
   test 'should get edit' do
@@ -36,8 +31,17 @@ class CatsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update cat' do
-    patch cat_url(@cat), params: { cat: { name: @cat.name } }
-    assert_redirected_to cat_url(@cat)
+    patch(
+      cat_url(@cat),
+      params: {
+        cat_form: {
+          cat_name: @cat.name,
+          subjects: @cat.subjects.pluck(:id, :name).map { %i[id name].zip(_1).to_h }
+        }
+      }
+    )
+
+    assert_redirected_to cats_url
   end
 
   test 'should destroy cat' do

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Form object for updating cat information and creating/updating related record items
+# 猫の情報の更新と、紐づく記録項目を作成・更新するためのフォームオブジェクト
 class CatForm
   include ActiveModel::Model
 
@@ -43,11 +43,8 @@ class CatForm
 
   def update_subjects!
     subjects.map do |subject|
-      if subject[:id].nil?
-        @cat.subjects.create!(name: subject[:name])
-      else
-        Subject.find(subject[:id]).update!(name: subject[:name])
-      end
+      subject[:id].blank? ? @cat.subjects.create!(name: subject[:name])
+                        : Subject.find(subject[:id]).update!(name: subject[:name])
     end
   end
 
