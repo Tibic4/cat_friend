@@ -1,9 +1,8 @@
 <div id="<%= dom_id cat %>">
-  <p>
+  <div>
     <strong><%= t('.name') %></strong>
     <%= cat.name %>
-  </p>
-  <p>
-    <%= link_to t('.edit_notation_setting'), edit_cat_notation_setting_path(cat) %>
-  </p>
+    <%= link_to t('.edit'), edit_cat_path(cat) %>
+    <%= link_to t(".delete"), @cat, method: :delete %>
+  </div>
 </div>

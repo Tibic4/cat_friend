@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
 class CatsController < ApplicationController
-  before_action :set_cat, only: %i[show edit update destroy]
+  before_action :set_cat, only: %i[edit update destroy]
 
   def index
     @cats = Cat.all
   end
-
-  def show; end
 
   def new
     @cat = Cat.new
