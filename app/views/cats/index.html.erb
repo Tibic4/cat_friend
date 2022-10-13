@@ -1,14 +1,14 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Cats</h1>
+<h1><%= t('.title') %></h1>
 
 <div id="cats">
   <% @cats.each do |cat| %>
     <%= render cat %>
     <p>
-      <%= link_to "Show this cat", cat %>
+      <%= link_to t('.cat_page'), cat %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New cat", new_cat_path %>
+<%= link_to t('.new_cat'), new_cat_path %>
