@@ -1,9 +1,9 @@
 <h1><%= t('.title') %></h1>
 
-<%= render "form", cat: @cat %>
+<%= render 'form', cat: @cat %>
 
 <br>
 
 <div>
-  <%= link_to "Back to cats", cats_path %>
+  <%= link_to t('.back_to_cats_page'), cats_path %>
 </div>

@@ -17,15 +17,15 @@ class CatsController < ApplicationController
     @cat = Cat.new(cat_params)
 
     if @cat.save
-      redirect_to cat_url(@cat), notice: 'Cat was successfully created.'
+      redirect_to cats_path, notice: I18n.t('cats.successfully_created', cat: @cat.name)
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity, alart: I18n.t('cats.failed_to_create')
     end
   end
 
   def update
     if @cat.update(cat_params)
-      redirect_to cat_url(@cat), notice: 'Cat was successfully updated.'
+      redirect_to cats_path, notice: I18n.t('cats.successfully_updated', cat: @cat.name)
     else
       render :edit, status: :unprocessable_entity
     end
@@ -34,7 +34,7 @@ class CatsController < ApplicationController
   def destroy
     @cat.destroy
 
-    redirect_to cats_url, notice: 'Cat was successfully destroyed.'
+    redirect_to cats_path, notice: I18n.t('cats.successfully_destroyed', cat: @cat.name)
   end
 
   private

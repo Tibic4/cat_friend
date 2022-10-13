@@ -3,6 +3,6 @@
     <strong><%= t('.name') %></strong>
     <%= cat.name %>
     <%= link_to t('.edit'), edit_cat_path(cat) %>
-    <%= link_to t(".delete"), @cat, method: :delete %>
+    <%= button_to t('.delete'), cat, method: :delete %>
   </div>
 </div>
