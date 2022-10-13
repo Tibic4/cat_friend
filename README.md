@@ -1,24 +1,16 @@
 # README
+You can keep a record of your cat's care and check it on the calendar.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Development Environment Setup
+Copy `.env.sample` to `.env` and replace 'xxx' with the values appropriate your own environment.
 
-Things you may want to cover:
+After that, start Docker containers and set up Rails.
 
-* Ruby version
+```sh
+# Build the Docker image and enter neko_app container.
+% docker compose up -d build
+% docker exec -it nko_app bash
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Then, run setup task.
+% bin/setup
+```

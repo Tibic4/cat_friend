@@ -1,49 +1,24 @@
 # frozen_string_literal: true
 
 class SubjectsController < ApplicationController
-  before_action :set_subject, only: %i[show edit update destroy]
-
-  def index
-    @subjects = Subject.all
-  end
-
-  def show; end
-
-  def new
-    @subject = Subject.new
-  end
-
-  def edit; end
-
   def create
     @subject = Subject.new(subject_params)
 
     if @subject.save
-      redirect_to subject_url(@subject), notice: 'Subject was successfully created.'
-    else
-      render :new, status: :unprocessable_entity
+      @cat = Cat.find(subject_params[:cat_id])
+      columns = %i[id name]
+      @cat_form = CatForm.new(
+        {
+          cat_name: @cat.name,
+          subjects: @cat.subjects.pluck(*columns).map { columns.zip(_1).to_h }
+        },
+        cat: @cat
+      )
+      flash.now.notice = I18n.t('flash_messages.subjects.successfully_created', subject: @subject.name)
     end
-  end
-
-  def update
-    if @subject.update(subject_params)
-      redirect_to subject_url(@subject), notice: 'Subject was successfully updated.'
-    else
-      render :edit, status: :unprocessable_entity
-    end
-  end
-
-  def destroy
-    @subject.destroy
-
-    redirect_to subjects_url, notice: 'Subject was successfully destroyed.'
   end
 
   private
-
-  def set_subject
-    @subject = Subject.find(params[:id])
-  end
 
   def subject_params
     params.require(:subject).permit(:name, :cat_id)

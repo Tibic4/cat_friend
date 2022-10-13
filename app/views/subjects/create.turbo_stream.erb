@@ -1,0 +1,5 @@
+<%= turbo_stream.replace 'cat-edit-form' do %>
+  <%= render partial: 'cats/edit_form',
+             locals: { cat: @cat, cat_form: @cat_form} %>
+<% end %>
+<%= turbo_stream.update 'flash', partial: 'flash' %>

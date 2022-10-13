@@ -6,7 +6,7 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - ./tmp/db:/var/lib/postgresql/data
+      - neko_cal_postgresql_data:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
@@ -25,5 +25,5 @@ services:
       - db
     tty: true
     stdin_open: true
-  volumes:
-    cat_friend_postgresql_data:
+volumes:
+  neko_cal_postgresql_data:

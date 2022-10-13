@@ -1,34 +1,39 @@
-<%= form_with(model: cat_form, url: cat_url(cat), method: :put) do |form| %>
-  <% if cat_form.errors.any? %>
-    <div style="color: red">
-      <ul>
-        <% cat_form.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<div id="cat-edit-form">
+  <%= form_with(model: cat_form, url: cat_url(cat), method: :put) do |form| %>
+    <% if cat_form.errors.any? %>
+      <div style="color: red">
+        <ul>
+          <% cat_form.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div>
+      <%= form.label :cat_name, style: "display: block" %>
+      <%= form.text_field :cat_name %>
+    </div>
+
+    <div>
+      <%# 更新 %>
+      <% cat_form.subjects.each do |subject| %>
+        <%= form.label t('.subject_name'), style: "display: block" %>
+        <%= form.hidden_field 'subjects[][id]', value: subject[:id] %>
+        <%= form.text_field 'subjects[][name]', value: subject[:name] %>
+      <% end %>
+    </div>
+    <div>
+      <%= form.submit %>
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :cat_name, style: "display: block" %>
-    <%= form.text_field :cat_name %>
-  </div>
-
-  <div>
-    <%# 更新 %>
-    <% cat_form.subjects.each do |subject| %>
-      <%= form.label t('.subject_name'), style: "display: block" %>
-      <%= form.hidden_field 'subjects[][id]', value: subject[:id] %>
-      <%= form.text_field 'subjects[][name]', value: subject[:name] %>
-    <% end %>
-
-    <%# 新規 %>
+  <%# 新規 %>
+  <%= form_with(model: Subject.new) do |new_subject_form| %>
     <h3><%= t('.new_subject') %></h3>
-    <%= form.label t('.subject_name'), style: "display: block" %>
-    <%= form.hidden_field 'subjects[][id]', value: nil %>
-    <%= form.text_field 'subjects[][name]' %>
-  </div>
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+    <%= new_subject_form.label t('.subject_name'), style: "display: block" %>
+    <%= new_subject_form.hidden_field :cat_id, value: cat.id %>
+    <%= new_subject_form.text_field :name %>
+    <%= new_subject_form.submit %>
+  <% end %>
+</div>
